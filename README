@@ -11,18 +11,17 @@ package
 		{
 			/*Flixel mods:
 			 * =======================================
-			 * In FLxG. gibt es eine static public var tilesize , sie ist gedacht zum leichten ändern
-			 * leider noch nicht überall drin
+			 * In FLxG. there is a static public var tilesize this is for easy changing tilesize
 			 * 
 			 * 	public class FlxG
-				static public var tilesize:uint=32;
-				static public var lives:uint = 3;
-			 * 
-			 * beim spike die unnötigen sachen //
-			 * powerups in gameojects
+			 *	static public var tilesize:uint=32;
+			 *	static public var lives:uint = 3;
 			 * 
 			 * 
-			 * hab nonsolid coisn aber jetzt geht overlap nich mehr
+			 * 
+			 * 
+			 * 
+			 * 
 			 * 
 			 * //ELEMENTARAMA JARGON
 			 * Grp Groups for Overlaps , GrpXXX causes getXXX
@@ -32,10 +31,10 @@ package
 			 * =========================================================
 			 * - There's a solid Sprite in the top left corner ;)
 			 * - Cycling states crashes (kill(), destroy()??)
-			 * - Font Error Pause , just needs to be done
+			 * - Font Error Pause , just needs to be done, the font actually doesn't contain all letters
 			 * - Error when pausing tweens 
 			 * - Error when Pausing class loaded Snd like enmey1Snd , see Flixelfoum /help/snail/
-			 * 
+			 * - Nonsolid coins VS overlap issue
 			 * 
 			 * 
 			 * 
