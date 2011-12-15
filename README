@@ -13,6 +13,8 @@ package
 			 * =======================================
 			 * In FLxG. there is a static public var tilesize this is for easy changing tilesize
 			 * 
+			 * FlxG class changes:
+			 *     
 			 * 	public class FlxG
 			 *	static public var tilesize:uint=32;
 			 *	static public var lives:uint = 3;
