@@ -173,7 +173,7 @@ if(!flickering() && FlxG.keys.justPressed("C"))
 	{
 	
 	idlecount = 0 ;
-	// Funktioniert sowieso nich :( hasShot = true;
+	// Problem occurs if :( hasShot = true;
 	FlxG.play(SndPlayershoot);	
 
 	
@@ -387,7 +387,7 @@ if(Powerup3Timer < 1500) {
 				play ("realidle");
 
 				else
-					// Problem with the idel animation needs to be fixed:
+					// Problem with the idle animation needs to be fixed:
 					
 					idlecount += 70 * FlxG.elapsed ;
 				}
