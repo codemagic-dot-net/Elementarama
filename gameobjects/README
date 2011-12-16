@@ -1,5 +1,6 @@
-*=====================================================================================================*
-* Here you'll find the code for the gameobjects there are different objects with different behaviours 
+*===================================================*
+* Here you'll find the code for the gameobjects there's a 
+* short description of the different objects and their behaviour.
 *
 * Elementarama / gameobjects	
 *------------------------------
@@ -26,7 +27,12 @@
 * The level exit
 *
 * file 	FlyingObject.as 
-* file 	Health.as 
+*----------------------
+*
+* file 	Health.as
+*----------------------
+* Health +10
+*
 * file 	JumpPad.as 	
 * file 	Key.as 
 * file 	Lightning.as 	
@@ -40,4 +46,4 @@
 * file 	Runner.as 
 * file 	Specialbox.as 	
 * file 	Spike.as 	
-*=======================================================================================================*
+*====================================================*
