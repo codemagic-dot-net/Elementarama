@@ -82,10 +82,10 @@ if(FlxG.Resolution=="640x480"){
 	this.offset.y = this.offset.y * FlxG.ResolutionScaleY;
 	this.offset.x = this.offset.x * FlxG.ResolutionScaleY;
 }
-		addAnimation("idle",[0],5,false); // 17 ist STAND
+		addAnimation("idle",[0],5,false); 
 		addAnimation("walk",[1,2,3,2],7,true);
 		addAnimation("walk_back",[3,2,1,3,2],7,true);
-		addAnimation("flail", [1,2,3,2], 18, true); // für jet idle raus
+		addAnimation("flail", [1,2,3,2], 18, true); //  jet idle 
 		addAnimation("jetidle", [16], 9, false);
 		addAnimation("realidle", [1,2,0,0,0,3,3,3,0,0,0,0,2,2,2,2,12,0,0,0,0,0,13,14,15,16,17,18,19,4,5,6,7,8,9,0,0,0,0,7,8,9,0,7,8,0,7,7,7,8,9,0,0,0,0], 3, true);
 			
