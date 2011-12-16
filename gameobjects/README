@@ -1,9 +1,43 @@
 *=====================================================================================================*
 * Here you'll find the code for the gameobjects there are different objects with different behaviours 
-* Powerup 1
-* Powerup 2
-* Powerup 3
-* Abyss
-* Cloud
 *
+* Elementarama / gameobjects	
+*------------------------------
+*
+* file 	Abyss.as 
+* -----------------
+* You better don't fall down here.
+*
+*
+* file 	Coin.as 	
+*------------------
+* Collect 'em for point
+*
+* file 	Crusher.as 	
+*-------------------
+* Don't get hit by this ;)
+*
+* file 	Door.as 
+*---------------------
+* A simple door
+*
+* file 	Exit.as 
+*---------------------
+* The level exit
+*
+* file 	FlyingObject.as 
+* file 	Health.as 
+* file 	JumpPad.as 	
+* file 	Key.as 
+* file 	Lightning.as 	
+* file 	MovableBlock.as 
+* file 	MovingBlock.as 
+* file 	Portal.as 	
+* file 	Powerup.as 	
+* file 	Powerup2.as 	
+* file 	Powerup3.as 	
+* file 	README 	
+* file 	Runner.as 
+* file 	Specialbox.as 	
+* file 	Spike.as 	
 *=======================================================================================================*
