@@ -38,7 +38,7 @@ private var _gibs:FlxEmitter;
 
 private var Powerup3Scaleswitch:uint = 0;	
 
-private var idlecount:uint = 0; // Für Animation
+private var idlecount:uint = 0; // used by idle animation
 private var hasShot:Boolean = false;
 
 // Edit this to tweak game 
@@ -71,7 +71,7 @@ private var _jumpPowerstatic:uint=600;
 			height = 169;
 		//	offset.x = 8;
 			offset.y = -21;
-			health=30; // Max Value 60 siehe playstate hud
+			health=30; // Max Value 60 have a look at playstate.as :  hud
 
 	//Animation
 if(FlxG.Resolution=="640x480"){
@@ -97,7 +97,7 @@ if(FlxG.Resolution=="640x480"){
 			addAnimation("throw", [23,24,25],18, false);
 		//	addAnimation("finger", [8,9,10], 18, false);
 			addAnimation("jet pack", [11, 12,13,14,15,16], 5, false);
-						//addAnimation("jet pack", [19, 20,22,23], 18, true);
+		//addAnimation("jet pack", [19, 20,22,23], 18, true);
 			addAnimation("dead", [18, 19, 20,21], 10, false);
 		addAnimation("jump", [12,13,14,15,16], 5, false);
 
