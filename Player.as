@@ -44,8 +44,8 @@ private var hasShot:Boolean = false;
 // Edit this to tweak game 
 public var Powerup2Duration:uint = 1000;
 public var Powerup3Duration:uint = 2500;
-private var imagesizeY:uint = 176 //nur zum besseren änder
-private var imagesizeX:uint = 58 //nur zum besseren änder
+private var imagesizeY:uint = 176 // just for lazy people
+private var imagesizeX:uint = 58 //just for lazy people
 //private var _jumpPower:uint = 1100; //the Players jump power is multiplied if hasPowerup2
 //private var _jumpPowerstatic:uint=1100; 
 private var _jumpPower:uint = 600; //the Players jump power is multiplied if hasPowerup2
@@ -90,7 +90,7 @@ if(FlxG.Resolution=="640x480"){
 		addAnimation("realidle", [1,2,0,0,0,3,3,3,0,0,0,0,2,2,2,2,12,0,0,0,0,0,13,14,15,16,17,18,19,4,5,6,7,8,9,0,0,0,0,7,8,9,0,7,8,0,7,7,7,8,9,0,0,0,0], 3, true);
 			
 		
-		//Noch nicht drin
+		//Needs to be done:
 			addAnimation("shoot", [5,6,7], 9, false);
 			addAnimationCallback(myCallback);
 
@@ -121,7 +121,7 @@ maxVelocity.x = runSpeed;
 _bullets = Bullets;
 _curBullet = 0;
 _bulletVel = 360;
-_bullets2 = Bullets2; // Hier muss eigentlich 2 hin aber wird noch nich bei play er übergeben
+_bullets2 = Bullets2; // needs to be done
 _curBullet2 = 0;
 
 
@@ -145,7 +145,7 @@ _gibs = Gibs;
 			
 			
 			
-		//MODE ANAFANG	
+		//MODE Start
 			 //game restart timer
 if(dead)
 	{
@@ -226,7 +226,7 @@ if(!flickering() && FlxG.keys.justPressed("C"))
 			}
 
 
-//HIER die verschiedenen SChuss
+//The different bullet types
 
 if(++_curBullet >= _bullets.length)
 _curBullet = 0;
@@ -387,7 +387,7 @@ if(Powerup3Timer < 1500) {
 				play ("realidle");
 
 				else
-					// WEnn die idle animation drin ist dann geht keine andere weil die bedingugn immer eintrifft und dann immer idle spielt
+					// Problem with the idel animation needs to be fixed:
 					
 					idlecount += 70 * FlxG.elapsed ;
 				}
