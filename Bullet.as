@@ -14,7 +14,8 @@ package
 			loadGraphic(ImgBullet,true,false,40,40);
 			width = 171;
 			height = 67;
-				//width = 6;
+
+			//width = 6;
 			//height = 6;
 			offset.x = 1;
 			offset.y = 1;
@@ -58,7 +59,7 @@ package
 		}
 
 
-// Bei BOtBullet die COllide schon geändert
+// Bei BOtBullet die COllide schon geï¿½ndert
 
 		//override public function hitSide(Contact:FlxObject,Velocity:Number):void { kill(); }
 		override public function hitBottom(Contact:FlxObject,Velocity:Number):void { kill(); }
