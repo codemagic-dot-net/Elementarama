@@ -19,10 +19,10 @@ package
 [Embed(source='data/Sound/SndPlayershoot.mp3')] protected var SndPlayershoot:Class;	// Collect Coin
 
 
-// DOn't edit this ;)
-public var hasPowerup:Boolean = false; // sollte eigentlich in die Player.as
-public var hasPowerup2:Boolean = false; // sollte eigentlich in die Player.as
-public var hasPowerup3:Boolean = false; // sollte eigentlich in die Player.as
+// Don't edit this ;)
+public var hasPowerup:Boolean = false; 
+public var hasPowerup2:Boolean = false; 
+public var hasPowerup3:Boolean = false; 
 public var Powerup2Timer:uint = 0;	
 public var Powerup3Timer:uint = 0;	
 
