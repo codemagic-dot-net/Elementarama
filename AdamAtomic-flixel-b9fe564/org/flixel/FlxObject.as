@@ -9,6 +9,10 @@ package org.flixel
 	 */
 	public class FlxObject extends FlxRect
 	{
+		
+		
+		public static var coins:FlxGroup;		// Coins
+					
 		/**
 		 * Kind of a global on/off switch for any objects descended from <code>FlxObject</code>.
 		 */

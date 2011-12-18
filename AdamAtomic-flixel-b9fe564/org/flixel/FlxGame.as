@@ -195,7 +195,7 @@ package org.flixel
 				_console.toggle();
 				return;
 			}
-			if(!FlxG.mobile && useDefaultHotKeys)
+			if(useDefaultHotKeys)
 			{
 				var c:int = event.keyCode;
 				var code:String = String.fromCharCode(event.charCode);
@@ -224,22 +224,6 @@ package org.flixel
 				}
 			}
 			FlxG.keys.handleKeyUp(event);
-			var i:uint = 0;
-			var l:uint = FlxG.gamepads.length;
-			while(i < l)
-				FlxG.gamepads[i++].handleKeyUp(event);
-		}
-		
-		/**
-		 * Internal event handler for input and focus.
-		 */
-		protected function onKeyDown(event:KeyboardEvent):void
-		{
-			FlxG.keys.handleKeyDown(event);
-			var i:uint = 0;
-			var l:uint = FlxG.gamepads.length;
-			while(i < l)
-				FlxG.gamepads[i++].handleKeyDown(event);
 		}
 		
 		/**
@@ -337,6 +321,7 @@ package org.flixel
 				_console.update();
 			
 			//State updating
+			FlxObject._refreshBounds = false;
 			FlxG.updateInput();
 			FlxG.updateSounds();
 			if(_paused)
@@ -394,11 +379,10 @@ package org.flixel
 				return;
 
 			var i:uint;
-			var l:uint;
 			var soundPrefs:FlxSave;
 			
 			//Set up the view window and double buffering
-			stage.scaleMode = StageScaleMode.SHOW_ALL;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
             stage.align = StageAlign.TOP_LEFT;
             stage.frameRate = _framerate;
             _screen = new Sprite();
@@ -412,85 +396,66 @@ package org.flixel
 			
 			//Initialize game console
 			_console = new FlxConsole(_gameXOffset,_gameYOffset,_zoom);
-			if(!FlxG.mobile)
-				addChild(_console);
+			addChild(_console);
 			var vstring:String = FlxG.LIBRARY_NAME+" v"+FlxG.LIBRARY_MAJOR_VERSION+"."+FlxG.LIBRARY_MINOR_VERSION;
 			if(FlxG.debug)
 				vstring += " [debug]";
 			else
 				vstring += " [release]";
 			var underline:String = "";
-			i = 0;
-			l = vstring.length+32;
-			while(i < l)
-			{
+			for(i = 0; i < vstring.length+32; i++)
 				underline += "-";
-				i++;
-			}
 			FlxG.log(vstring);
 			FlxG.log(underline);
 			
 			//Add basic input even listeners
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, FlxG.keys.handleKeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, FlxG.mouse.handleMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, FlxG.mouse.handleMouseUp);
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
-			if(!FlxG.mobile)
+			stage.addEventListener(MouseEvent.MOUSE_OUT, FlxG.mouse.handleMouseOut);
+			stage.addEventListener(MouseEvent.MOUSE_OVER, FlxG.mouse.handleMouseOver);
+							
+			//Initialize the pause screen
+			stage.addEventListener(Event.DEACTIVATE, onFocusLost);
+			stage.addEventListener(Event.ACTIVATE, onFocus);
+			
+			//Sound Tray popup
+			_soundTray = new Sprite();
+			_soundTray.visible = false;
+			_soundTray.scaleX = 2;
+			_soundTray.scaleY = 2;
+			tmp = new Bitmap(new BitmapData(80,30,true,0x7F000000));
+			_soundTray.x = (_gameXOffset+FlxG.width/2)*_zoom-(tmp.width/2)*_soundTray.scaleX;
+			_soundTray.addChild(tmp);
+			
+			var text:TextField = new TextField();
+			text.width = tmp.width;
+			text.height = tmp.height;
+			text.multiline = true;
+			text.wordWrap = true;
+			text.selectable = false;
+			text.embedFonts = true;
+			text.antiAliasType = AntiAliasType.NORMAL;
+			text.gridFitType = GridFitType.PIXEL;
+			text.defaultTextFormat = new TextFormat("system",8,0xffffff,null,null,null,null,null,"center");;
+			_soundTray.addChild(text);
+			text.text = "VOLUME";
+			text.y = 16;
+			
+			var bx:uint = 10;
+			var by:uint = 14;
+			_soundTrayBars = new Array();
+			for(i = 0; i < 10; i++)
 			{
-				stage.addEventListener(MouseEvent.MOUSE_OUT, FlxG.mouse.handleMouseOut);
-				stage.addEventListener(MouseEvent.MOUSE_OVER, FlxG.mouse.handleMouseOver);
-				stage.addEventListener(Event.DEACTIVATE, onFocusLost);
-				stage.addEventListener(Event.ACTIVATE, onFocus);
-				
-				//Sound Tray popup
-				_soundTray = new Sprite();
-				_soundTray.visible = false;
-				_soundTray.scaleX = 2;
-				_soundTray.scaleY = 2;
-				tmp = new Bitmap(new BitmapData(80,30,true,0x7F000000));
-				_soundTray.x = (_gameXOffset+FlxG.width/2)*_zoom-(tmp.width/2)*_soundTray.scaleX;
-				_soundTray.addChild(tmp);
-				
-				var text:TextField = new TextField();
-				text.width = tmp.width;
-				text.height = tmp.height;
-				text.multiline = true;
-				text.wordWrap = true;
-				text.selectable = false;
-				text.embedFonts = true;
-				text.antiAliasType = AntiAliasType.NORMAL;
-				text.gridFitType = GridFitType.PIXEL;
-				text.defaultTextFormat = new TextFormat("system",8,0xffffff,null,null,null,null,null,"center");;
-				_soundTray.addChild(text);
-				text.text = "VOLUME";
-				text.y = 16;
-				
-				var bx:uint = 10;
-				var by:uint = 14;
-				_soundTrayBars = new Array();
-				i = 0;
-				while(i < 10)
-				{
-					tmp = new Bitmap(new BitmapData(4,++i,false,0xffffff));
-					tmp.x = bx;
-					tmp.y = by;
-					_soundTrayBars.push(_soundTray.addChild(tmp));
-					bx += 6;
-					by--;
-				}
-				addChild(_soundTray);
-				
-				//Check for saved sound preference data
-				soundPrefs = new FlxSave();
-				if(soundPrefs.bind("flixel") && (soundPrefs.data.sound != null))
-				{
-					if(soundPrefs.data.volume != null)
-						FlxG.volume = soundPrefs.data.volume;
-					if(soundPrefs.data.mute != null)
-						FlxG.mute = soundPrefs.data.mute;
-					showSoundTray(true);
-				}
+				tmp = new Bitmap(new BitmapData(4,i+1,false,0xffffff));
+				tmp.x = bx;
+				tmp.y = by;
+				_soundTrayBars.push(_soundTray.addChild(tmp));
+				bx += 6;
+				by--;
 			}
+			addChild(_soundTray);
 
 			//Initialize the decorative frame (optional)
 			if(_frame != null)
@@ -499,6 +464,17 @@ package org.flixel
 				bmp.scaleX = _zoom;
 				bmp.scaleY = _zoom;
 				addChild(bmp);
+			}
+			
+			//Check for saved sound preference data
+			soundPrefs = new FlxSave();
+			if(soundPrefs.bind("flixel") && (soundPrefs.data.sound != null))
+			{
+				if(soundPrefs.data.volume != null)
+					FlxG.volume = soundPrefs.data.volume;
+				if(soundPrefs.data.mute != null)
+					FlxG.mute = soundPrefs.data.mute;
+				showSoundTray(true);
 			}
 			
 			//All set!

@@ -700,38 +700,38 @@ GrpExit.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(11616, 992,20,100);
-MGrpObjects.add(obj);
+//MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(11840, 992,30,150);
-MGrpObjects.add(obj);
+//MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(12096, 992,40,50);
-MGrpObjects.add(obj);
+//MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new Door(12576, 960);
 GrpDoor.add(obj);;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new JumpPad(12608, 896,_player1);
@@ -759,14 +759,14 @@ GrpKey.add(obj);;
 GrpMovableBlock.add(obj);;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovableBlock(3440, 1200);
 GrpMovableBlock.add(obj);;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new Enemy2(9504, 1184,_player1);
@@ -888,7 +888,7 @@ GrpCoins.add(obj);
 GrpDoor.add(obj);;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new Key(4384, 1184);
@@ -931,7 +931,7 @@ MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new Coin(12606, 624);
@@ -1353,7 +1353,7 @@ MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(896, 1024,20,50);
@@ -1361,7 +1361,7 @@ MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(1120, 1024,60,50);
@@ -1369,7 +1369,7 @@ MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new MovingBlock(1344, 1024,50,50);
@@ -1377,7 +1377,7 @@ MGrpObjects.add(obj);
 ;
 			obj.x+=obj.offset.x;
 			obj.y+=obj.offset.y;
-			FlxG.state.add(obj);
+//			FlxG.state.add(obj);
 			if(onAddCallback != null)
 				onAddCallback(obj);
 			obj = new Crusher(1748, 1072,5,0,400);
@@ -5106,7 +5106,7 @@ add(HUDBG);
 
 beard = new FlxSprite;
 beard.loadGraphic(ImgBeard, false, false);
-add(beard);
+// add(beard); commented out , just for fun added a item to the player maybe using it later for equip
 
 
 

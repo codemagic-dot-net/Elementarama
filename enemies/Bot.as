@@ -6,7 +6,7 @@ package enemies
 
 	public class Bot extends FlxSprite
 	{
-	[Embed(source='../data/images/retrofuto.png')] protected var ImgBot:Class;
+	[Embed(source='../data/images/ImgRetrofuto.png')] protected var ImgBot:Class;
 [Embed(source='../data/Images/fire.png')] protected var ImgJet:Class;
 	[Embed(source='../data/Sound/SndBotdeath.mp3')]protected var SndExplode:Class;
 [Embed(source='../data/Sound/SndHit.mp3')] protected var SndHit:Class;

@@ -11,6 +11,7 @@ preloader = 'Preloader'		# Name of the preloader class
 flexBuilder = True			# Whether or not to generate a Default.css file
 menuState = 'MenuState'		# Name of menu state class
 playState = 'PlayState'		# Name of play state class
++
 
 #Get name of project
 if len(sys.argv) <= 1:

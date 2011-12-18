@@ -119,7 +119,7 @@ import flash.events.TimerEvent;
 	
 		
 				_player2 = new FlxSprite(1200, 800);
-				_player2.loadGraphic(ImgPlayer,true,true,140/2,175);
+				_player2.loadGraphic(ImgPlayer,true,true,58,176);
 				_player2.addAnimation("realidle", [14,15,16,17], 6, true);
 				_player2.addAnimation("jump", [19, 20, 21,22,23], 3, false);
 				add(_player2);

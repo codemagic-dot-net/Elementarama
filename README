@@ -16,6 +16,8 @@ package
 		using Flashdevelop ,the Flex SDK and the Flixel Framework
 		You can use the level editor of your choice
 		or write the maps in plain text.
+		
+		You'll need the tween lib from http://www.greensock.com/
 		===========================================================
 		
 			/*Flixel mods:

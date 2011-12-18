@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project>
+<project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie disabled="False" />
+    <movie outputType="Application" />
     <movie input="" />
     <movie path="Game.swf" />
     <movie fps="30" />
     <movie width="640" />
     <movie height="480" />
     <movie version="11" />
+    <movie minorVersion="1" />
+    <movie platform="Flash Player" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="." />
-    <class path="..\..\greensock-as3\greensock-as3" />
-    <class path="..\AdamAtomic-flixel-b9fe564" />
+    <class path="AdamAtomic-flixel-b9fe564" />
+    <class path="..\..\..\STUFF\GmbH\Flash Games\Elementarama\greensock-as3" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -26,8 +27,10 @@
     <option locale="" />
     <option loadConfig="" />
     <option optimize="False" />
+    <option omitTraces="True" />
     <option showActionScriptWarnings="True" />
     <option showBindingWarnings="True" />
+    <option showInvalidCSS="True" />
     <option showDeprecationWarnings="True" />
     <option showUnusedTypeSelectorWarnings="True" />
     <option strict="True" />
@@ -40,7 +43,7 @@
     <option staticLinkRSL="True" />
     <option additional="" />
     <option compilerConstants="" />
-    <option customSDK="../flex_sdk_4.1.0.16076" />
+    <option minorVersion="" />
   </build>
   <!-- SWC Include Libraries -->
   <includeLibraries>
@@ -81,6 +84,8 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="NewWindow" />
+    <option testMovie="ExternalPlayer" />
   </options>
+  <!-- Plugin storage -->
+  <storage />
 </project>

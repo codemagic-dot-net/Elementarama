@@ -110,7 +110,7 @@ _restart = 0;
 
 
 	//basic player physics
-var runSpeed:uint = 80*2.3; 
+var runSpeed:uint = 180*2.3; 
 maxVelocity.x = runSpeed;
 
 
@@ -128,7 +128,7 @@ _curBullet2 = 0;
 //Gibs emitted upon death
 _gibs = Gibs;
 
-			//MODE ENDE
+
 			
 			
 			
@@ -145,7 +145,6 @@ _gibs = Gibs;
 			
 			
 			
-		//MODE Start
 			 //game restart timer
 if(dead)
 	{

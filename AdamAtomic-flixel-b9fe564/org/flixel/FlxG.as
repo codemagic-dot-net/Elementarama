@@ -13,11 +13,31 @@ package org.flixel
 	 */
 	public class FlxG
 	{
+		
+		
+				static public var tilesize:uint=32;
+				static public var lives:uint = 3;
+				//static public var Resolution:String = "640x480";
+				static public var Resolution:String = "1024x768";
+				static public var ResolutionScaleX:Number;//= 0.625;
+				static public var ResolutionScaleY:Number;//= 0.625;// 1024 VS 640
+
+		
+		
+		
+		
+			
+		
+		
+		
+		
+		
+		
 		/**
 		 * If you build and maintain your own version of flixel,
 		 * you can give it your own name here.  Appears in the console.
 		 */
-		static public var LIBRARY_NAME:String = "flixel";
+		static public var LIBRARY_NAME:String = "flaixel";
 		/**
 		 * Assign a major version to your library.
 		 * Appears before the decimal in the console.
@@ -27,7 +47,7 @@ package org.flixel
 		 * Assign a minor version to your library.
 		 * Appears after the decimal in the console.
 		 */
-		static public var LIBRARY_MINOR_VERSION:uint = 41;
+		static public var LIBRARY_MINOR_VERSION:uint = 35;
 
 		/**
 		 * Internal tracker for game object (so we can pause & unpause)
@@ -43,9 +63,9 @@ package org.flixel
 		 */
 		static public var debug:Boolean;
 		/**
-		 * Set <code>showBounds</code> to true to display the bounding boxes of the in-game objects.
+		 * Internal tracker for bounding box visibility.
 		 */
-		static public var showBounds:Boolean;
+		static protected var _showBounds:Boolean;
 		
 		/**
 		 * Represents the amount of time in seconds that passed since last frame.
@@ -68,15 +88,11 @@ package org.flixel
 		 */
 		static public var height:uint;
 		/**
-		 * Setting this to true will disable/skip stuff that isn't necessary for mobile platforms like Android. [BETA]
-		 */
-		static public var mobile:Boolean; 
-		/**
 		 * <code>FlxG.levels</code> and <code>FlxG.scores</code> are generic
 		 * global variables that can be used for various cross-state stuff.
 		 */
 		static public var levels:Array;
-		static public var level:int;
+		static public var level:int=101;
 		static public var scores:Array;
 		static public var score:int;
 		/**
@@ -94,10 +110,6 @@ package org.flixel
 		 * A reference to a <code>FlxKeyboard</code> object.  Important for input!
 		 */
 		static public var keys:FlxKeyboard;
-		/**
-		 * An array of <code>FlxGamepad</code> objects.  Important for input!
-		 */
-		static public var gamepads:Array;
 		
 		/**
 		 * A handy container for a background music object.
@@ -219,6 +231,25 @@ package org.flixel
 		}
 		
 		/**
+		 * Set <code>showBounds</code> to true to display the bounding boxes of the in-game objects.
+		 */
+		static public function get showBounds():Boolean
+		{
+			return _showBounds;
+		}
+		
+		/**
+		 * @private
+		 */
+		static public function set showBounds(ShowBounds:Boolean):void
+		{
+			var osb:Boolean = _showBounds;
+			_showBounds = ShowBounds;
+			if(_showBounds != osb)
+				FlxObject._refreshBounds = true;
+		}
+		
+		/**
 		 * The game and SWF framerate; default is 60.
 		 */
 		static public function get framerate():uint
@@ -261,10 +292,6 @@ package org.flixel
 		{
 			keys.reset();
 			mouse.reset();
-			var i:uint = 0;
-			var l:uint = gamepads.length;
-			while(i < l)
-				gamepads[i++].reset();
 		}
 		
 		/**
@@ -296,14 +323,10 @@ package org.flixel
 		 */
 		static public function play(EmbeddedSound:Class,Volume:Number=1.0,Looped:Boolean=false):FlxSound
 		{
-			var i:uint = 0;
 			var sl:uint = sounds.length;
-			while(i < sl)
-			{
+			for(var i:uint = 0; i < sl; i++)
 				if(!(sounds[i] as FlxSound).active)
 					break;
-				i++;
-			}
 			if(sounds[i] == null)
 				sounds[i] = new FlxSound();
 			var s:FlxSound = sounds[i];
@@ -324,14 +347,10 @@ package org.flixel
 		 */
 		static public function stream(URL:String,Volume:Number=1.0,Looped:Boolean=false):FlxSound
 		{
-			var i:uint = 0;
 			var sl:uint = sounds.length;
-			while(i < sl)
-			{
+			for(var i:uint = 0; i < sl; i++)
 				if(!(sounds[i] as FlxSound).active)
 					break;
-				i++;
-			}
 			if(sounds[i] == null)
 				sounds[i] = new FlxSound();
 			var s:FlxSound = sounds[i];
@@ -404,12 +423,11 @@ package org.flixel
 				return;
 			if((music != null) && (ForceDestroy || !music.survive))
 				music.destroy();
-			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
-			while(i < sl)
+			for(var i:uint = 0; i < sl; i++)
 			{
-				s = sounds[i++] as FlxSound;
+				s = sounds[i] as FlxSound;
 				if((s != null) && (ForceDestroy || !s.survive))
 					s.destroy();
 			}
@@ -422,12 +440,11 @@ package org.flixel
 		{
 			if((music != null) && music.active)
 				music.updateTransform();
-			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
-			while(i < sl)
+			for(var i:uint = 0; i < sl; i++)
 			{
-				s = sounds[i++] as FlxSound;
+				s = sounds[i] as FlxSound;
 				if((s != null) && s.active)
 					s.updateTransform();
 			}
@@ -440,12 +457,11 @@ package org.flixel
 		{
 			if((music != null) && music.active)
 				music.update();
-			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
-			while(i < sl)
+			for(var i:uint = 0; i < sl; i++)
 			{
-				s = sounds[i++] as FlxSound;
+				s = sounds[i] as FlxSound;
 				if((s != null) && s.active)
 					s.update();
 			}
@@ -458,12 +474,11 @@ package org.flixel
 		{
 			if((music != null) && music.active)
 				music.pause();
-			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
-			while(i < sl)
+			for(var i:uint = 0; i < sl; i++)
 			{
-				s = sounds[i++] as FlxSound;
+				s = sounds[i] as FlxSound;
 				if((s != null) && s.active)
 					s.pause();
 			}
@@ -476,12 +491,11 @@ package org.flixel
 		{
 			if((music != null) && music.active)
 				music.play();
-			var i:uint = 0;
 			var s:FlxSound;
 			var sl:uint = sounds.length;
-			while(i < sl)
+			for(var i:uint = 0; i < sl; i++)
 			{
-				s = sounds[i++] as FlxSound;
+				s = sounds[i] as FlxSound;
 				if((s != null) && s.active)
 					s.play();
 			}
@@ -654,26 +668,6 @@ package org.flixel
 		{
 			_game.switchState(State);
 		}
-		
-		/**
-		 * Stops and resets the camera.
-		 */
-		static public function unfollow():void
-		{
-			followTarget = null;
-			followLead = null;
-			followLerp = 1;
-			followMin = null;
-			followMax = null;
-			if(scroll == null)
-				scroll = new Point();
-			else
-				scroll.x = scroll.y = 0;
-			if(_scrollTarget == null)
-				_scrollTarget = new Point();
-			else
-				_scrollTarget.x = _scrollTarget.y = 0;
-		}
 
 		/**
 		 * Called by <code>FlxGame</code> to set up <code>FlxG</code> during <code>FlxGame</code>'s constructor.
@@ -689,11 +683,6 @@ package org.flixel
 			sounds = new Array();
 			mouse = new FlxMouse();
 			keys = new FlxKeyboard();
-			gamepads = new Array(4);
-			gamepads[0] = new FlxGamepad();
-			gamepads[1] = new FlxGamepad();
-			gamepads[2] = new FlxGamepad();
-			gamepads[3] = new FlxGamepad();
 			scroll = null;
 			_scrollTarget = null;
 			unfollow();
@@ -709,9 +698,8 @@ package org.flixel
 			frameratePaused = 10;
 			maxElapsed = 0.0333333;
 			FlxG.elapsed = 0;
-			showBounds = false;
-			
-			mobile = false;
+			_showBounds = false;
+			FlxObject._refreshBounds = false;
 			
 			panel = new FlxPanel();
 			quake = new FlxQuake(Zoom);
@@ -757,16 +745,32 @@ package org.flixel
 		}
 		
 		/**
+		 * Stops and resets the camera.
+		 */
+		static internal function unfollow():void
+		{
+			followTarget = null;
+			followLead = null;
+			followLerp = 1;
+			followMin = null;
+			followMax = null;
+			if(scroll == null)
+				scroll = new Point();
+			else
+				scroll.x = scroll.y = 0;
+			if(_scrollTarget == null)
+				_scrollTarget = new Point();
+			else
+				_scrollTarget.x = _scrollTarget.y = 0;
+		}
+		
+		/**
 		 * Calls update on the keyboard and mouse input tracking objects.
 		 */
 		static internal function updateInput():void
 		{
 			keys.update();
 			mouse.update(state.mouseX,state.mouseY,scroll.x,scroll.y);
-			var i:uint = 0;
-			var l:uint = gamepads.length;
-			while(i < l)
-				gamepads[i++].update();
 		}
 	}
 }

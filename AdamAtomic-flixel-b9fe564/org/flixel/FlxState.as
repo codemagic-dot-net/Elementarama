@@ -16,7 +16,7 @@ package org.flixel
 	 * or with flixel elements, whatever works!
 	 */
 	public class FlxState extends Sprite
-	{
+	{ 	static public var MapNumber:uint=101;
 		/**
 		 * This static variable holds the screen buffer,
 		 * so you can draw to it directly if you want.
