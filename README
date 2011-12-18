@@ -10,6 +10,14 @@ package
 		
 		public function DEVREADME() 
 		{
+		
+		===========================================================
+		Elementarama is a basic Jump and Run Game,
+		using Flashdevelop ,the Flex SDK and the Flixel Framework
+		You can use the level editor of your choice
+		or write the maps in plain text.
+		===========================================================
+		
 			/*Flixel mods:
 			 * =======================================
 			 * In FLxG. there is a static public var tilesize this is for easy changing tilesize
@@ -27,7 +35,7 @@ package
 			 * 
 			 * 
 			 * //ELEMENTARAMA JARGON
-			 * Grp Groups for Overlaps , GrpXXX causes getXXX
+			 * Grp Groups for Overlaps , GrpXXX causes getXXX function
 			 * MGrps Meta Grps (can contain grps ^^) for collision
 			 * 
 			 * // KNOWN BUGS
