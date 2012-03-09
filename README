@@ -9,7 +9,9 @@ package
 	{
 		
 		public function DEVREADME() 
-		{
+		{ 
+
+
 		
 		===========================================================
 		Elementarama is a basic Jump and Run Game,
@@ -29,11 +31,6 @@ package
 			 * 	public class FlxG
 			 *	static public var tilesize:uint=32;
 			 *	static public var lives:uint = 3;
-			 * 
-			 * 
-			 * 
-			 * 
-			 * 
 			 * 
 			 * 
 			 * //ELEMENTARAMA JARGON
@@ -72,10 +69,6 @@ package
 			 * 
 			 * 
 			 * 
-			 * 
-			 * 
-			 * 
-			 * 
 			 * Groups
 			 * ====================================================
 			 * For Collision, there are:
@@ -85,8 +78,7 @@ package
 			 * _objects
 			 * 
 			 * And for every GameObject that interacts with the player e.g. GrpCoins GrpExit GrpPowerup
-			 * 
-			 * is a get
+			 * is a getfunction
 			 * 
 			 * 
 			 * 
