@@ -78,7 +78,7 @@ package
 			 * _objects
 			 * 
 			 * And for every GameObject that interacts with the player e.g. GrpCoins GrpExit GrpPowerup
-			 * is a getfunction
+			 * there is a getfunction which handles the players state.
 			 * 
 			 * 
 			 * 
