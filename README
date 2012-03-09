@@ -84,7 +84,7 @@ package
 			 * 
 			
 			 FlxObject.hitRight() calls FlxObject.hitLeft() // See Flixel Forum
-			 Non Solid Sprites can't collide() OR Overlap // See Flixel Forum, must be solid , no way
+			 Non Solid Sprites can't collide() AND Overlap // See Flixel Forum, must be solid , no way
 			 ==========================================================
 		
 			 
